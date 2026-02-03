@@ -146,14 +146,14 @@ function App() {
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring" }}
               >
-                Hey 🌸
+                Hey there 🌸
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                I made something for you
+                I made something special, just for you
               </motion.p>
               
               <form onSubmit={handleWelcomeSubmit} className="form">
@@ -207,7 +207,7 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Hi {userData.name} 😊
+                Hi {userData.name}, you know how some people just... fit perfectly? 🌸
               </motion.h1>
               
               <motion.p
@@ -216,22 +216,34 @@ function App() {
                 transition={{ delay: 0.5 }}
                 className="story-text"
               >
-                You make everything feel lighter.
+                There's this feeling when someone walks into your world and suddenly everything feels... warmer. 
+                Like when you're having the most ordinary day, but then you see their smile and somehow it becomes extraordinary.
               </motion.p>
               
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
+                className="story-text"
+              >
+                I've been thinking about how some conversations just flow naturally, how some laughs feel like home, 
+                and how some people make you want to be the best version of yourself without even trying.
+              </motion.p>
+              
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1 }}
                 className="proposal-text"
               >
-                I like you. Would you like to go on a date with me?
+                What I'm trying to say is... you're that person for me. 
+                And I was wondering if maybe, just maybe, you'd like to explore what this could be? ✨
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.1 }}
+                transition={{ delay: 1.4 }}
                 className="button-container"
               >
                 <motion.button
@@ -240,7 +252,7 @@ function App() {
                   onClick={() => handleResponse('yes')}
                   className="button yes-button"
                 >
-                  😊 Yes, I'd like that
+                  🌸 I'd love to see where this goes
                 </motion.button>
                 
                 <motion.button
@@ -249,17 +261,17 @@ function App() {
                   onClick={() => handleResponse('no')}
                   className="button no-button"
                 >
-                  🌿 Let's stay friends
+                  🤍 I treasure what we have as friends
                 </motion.button>
               </motion.div>
 
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.4 }}
+                transition={{ delay: 1.7 }}
                 className="closing-text"
               >
-                No pressure at all 🤍
+                Whatever you're feeling is perfectly okay 🤍
               </motion.p>
             </div>
           </motion.div>
@@ -280,8 +292,8 @@ function App() {
                 transition={{ delay: 0.2 }}
               >
                 {userData.response === 'yes' 
-                  ? "Really? 🥰 That makes me happy!" 
-                  : "Thank you for being honest 🌿"}
+                  ? "Really? 🥰 My heart is so full right now!" 
+                  : "Thank you for being so honest with me 🌿"}
               </motion.h2>
               
               <motion.p
@@ -290,8 +302,8 @@ function App() {
                 transition={{ delay: 0.4 }}
               >
                 {userData.response === 'yes'
-                  ? "We can take things slow and see how it goes."
-                  : "I'm glad we're friends. That means a lot to me."}
+                  ? "There's no rush at all. We can take this one beautiful moment at a time."
+                  : "Your friendship is such a gift to me. I'm grateful for the honesty and trust between us."}
               </motion.p>
 
               <form onSubmit={handleSubmit} className="form">
@@ -299,7 +311,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  placeholder="How are you feeling?"
+                  placeholder="What's in your heart right now?"
                   value={userData.message}
                   onChange={(e) => setUserData(prev => ({ ...prev, message: e.target.value }))}
                   className="textarea"
@@ -344,7 +356,7 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                I'm grateful for this moment.
+                Thank you for sharing this moment with me. It means more than words can say.
               </motion.p>
             </div>
           </motion.div>
