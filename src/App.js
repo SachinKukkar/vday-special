@@ -207,7 +207,7 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Hi {userData.name}, you know how some people just... fit perfectly? 🌸
+                Hi {userData.name},
               </motion.h1>
               
               <motion.p
@@ -216,8 +216,8 @@ function App() {
                 transition={{ delay: 0.5 }}
                 className="story-text"
               >
-                There's this feeling when someone walks into your world and suddenly everything feels... warmer. 
-                Like when you're having the most ordinary day, but then you see their smile and somehow it becomes extraordinary.
+                You know how some people just… fit, without trying? 🌸<br/>
+                There's this quiet warmth when they enter your world — like an ordinary day suddenly feeling a little lighter.
               </motion.p>
               
               <motion.p
@@ -226,8 +226,7 @@ function App() {
                 transition={{ delay: 0.8 }}
                 className="story-text"
               >
-                I've been thinking about how some conversations just flow naturally, how some laughs feel like home, 
-                and how some people make you want to be the best version of yourself without even trying.
+                I've been thinking about how some conversations flow effortlessly, how some laughs feel comforting, and how some people make you want to grow, simply by being themselves.
               </motion.p>
               
               <motion.p
@@ -236,14 +235,23 @@ function App() {
                 transition={{ delay: 1.1 }}
                 className="proposal-text"
               >
-                What I'm trying to say is... you're that person for me. 
-                And I was wondering if maybe, just maybe, you'd like to explore what this could be? ✨
+                Somewhere along the way, I realized you're that person for me.<br/>
+                So I wanted to be honest — gently, without expectations.
+              </motion.p>
+              
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.4 }}
+                className="proposal-text"
+              >
+                And I was wondering… if maybe, at your own pace, you'd like to explore what this could be? ✨
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.4 }}
+                transition={{ delay: 1.7 }}
                 className="button-container"
               >
                 <motion.button
@@ -268,7 +276,7 @@ function App() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.7 }}
+                transition={{ delay: 2 }}
                 className="closing-text"
               >
                 Whatever you're feeling is perfectly okay 🤍
