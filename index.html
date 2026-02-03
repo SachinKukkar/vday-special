@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Something I wanted to tell you</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="hearts-bg"></div>
+  
+  <!-- Welcome Form -->
+  <div id="welcomeForm" class="welcome-container">
+    <div class="welcome-content">
+      <h2>Hey there 🌿</h2>
+      <p>I made something special for you, and I'd love for it to feel personal</p>
+      <input type="text" id="userName" placeholder="What should I call you?" required>
+      <input type="email" id="userEmail" placeholder="Your email (if you'd like to share)">
+      <input type="tel" id="userPhone" placeholder="Your phone (totally optional)">
+      <p class="validation-note">Just your name is perfect to get started ✨</p>
+      <button onclick="startStory()" class="start-btn">Let's see what this is about</button>
+    </div>
+  </div>
+
+  <!-- Main Story -->
+  <div id="mainStory" class="container hidden">
+    <h1 id="textMain">You know how some people just... fit into your world perfectly?</h1>
+    <p class="story-text">I've been thinking about how naturally you make everything feel lighter. There's something about the way you laugh, the way you listen, the way you just... are. It's made me realize something I wanted to share with you.</p>
+    <p class="proposal-text">I really like you. Not in a scary, overwhelming way — just in a genuine, warm, "I'd love to see where this goes" kind of way.</p>
+    
+    <img id="catImage" src="img/cat-133_256.gif" alt="cute_cat">
+    
+    <div class="button-container">
+      <button id="yesButton" onclick="handleYes()">🌸 I'd love to see where this goes</button>
+      <button id="noButton" onmouseenter="moveNoButton()" onclick="moveNoButton()">🌿 I think we're better as friends</button>
+    </div>
+    
+    <p class="closing-text">Whatever you're feeling right now is completely okay. Thank you for taking the time to read this 🤍</p>
+    
+    <!-- Hidden No Button for actual selection -->
+    <div class="secret-no-container">
+      <p class="secret-text">Okay, you really want to say no? 😅</p>
+      <button id="actualNoButton" onclick="handleNo()" class="actual-no-btn">Yes, I really mean no</button>
+    </div>
+  </div>
+
+  <!-- Response Modal -->
+  <div id="responseModal" class="modal hidden">
+    <div class="modal-content">
+      <p id="responseMessage"></p>
+      <textarea id="feelingsInput" placeholder="Share whatever's on your heart..." class="feelings-input" required></textarea>
+      <button onclick="submitResponse()" id="submitBtn" class="submit-btn">Send with love</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
