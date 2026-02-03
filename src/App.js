@@ -9,29 +9,29 @@ const supabase = createClient(
 );
 
 const FloatingHearts = () => {
-  const hearts = ['♡', '♥', '💕', '🌸', '✨', '🦋', '🌺'];
+  const hearts = ['♡', '♥', '💕', '🌸', '✨'];
   
   return (
     <div className="floating-hearts">
-      {[...Array(20)].map((_, i) => (
+      {[...Array(12)].map((_, i) => (
         <motion.div
           key={i}
           className="heart"
           initial={{ y: '100vh', opacity: 0 }}
           animate={{ 
             y: '-100vh', 
-            opacity: [0, 1, 0],
-            x: Math.sin(i) * 150
+            opacity: [0, 0.6, 0],
+            x: Math.sin(i) * 80
           }}
           transition={{
-            duration: Math.random() * 15 + 15,
+            duration: Math.random() * 12 + 12,
             repeat: Infinity,
-            delay: Math.random() * 8,
+            delay: Math.random() * 6,
             ease: 'linear'
           }}
           style={{
             left: `${Math.random() * 100}%`,
-            fontSize: `${Math.random() * 12 + 16}px`
+            fontSize: `${Math.random() * 8 + 14}px`
           }}
         >
           {hearts[Math.floor(Math.random() * hearts.length)]}
@@ -42,23 +42,23 @@ const FloatingHearts = () => {
 };
 
 const Confetti = () => {
-  const colors = ['#ff6b9d', '#f7b2bd', '#ffd93d', '#6bcf7f', '#a8e6cf', '#ffd3a5'];
+  const colors = ['#ff6b9d', '#f7b2bd', '#ffd93d', '#6bcf7f', '#a8e6cf'];
   
   return (
     <div className="confetti-container">
-      {[...Array(80)].map((_, i) => (
+      {[...Array(60)].map((_, i) => (
         <motion.div
           key={i}
           className="confetti"
           initial={{ y: -10, opacity: 1 }}
           animate={{ 
             y: window.innerHeight + 10,
-            x: Math.random() * 300 - 150,
-            rotate: 720
+            x: Math.random() * 200 - 100,
+            rotate: 360
           }}
           transition={{
-            duration: Math.random() * 4 + 3,
-            delay: Math.random() * 3,
+            duration: Math.random() * 3 + 2,
+            delay: Math.random() * 2,
             ease: 'easeOut'
           }}
           style={{
@@ -86,7 +86,7 @@ function App() {
   const handleWelcomeSubmit = (e) => {
     e.preventDefault();
     if (!userData.name.trim()) {
-      alert('I would be delighted to know what I should call you 😊');
+      alert('What should I call you? 😊');
       return;
     }
     setUserData(prev => ({ ...prev, timestamp: new Date().toISOString() }));
@@ -97,7 +97,7 @@ function App() {
     setUserData(prev => ({ ...prev, response }));
     if (response === 'yes') {
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 6000);
+      setTimeout(() => setShowConfetti(false), 4000);
     }
     setStep('feelings');
   };
@@ -105,7 +105,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userData.message.trim()) {
-      alert('I would truly appreciate hearing your thoughts 💭');
+      alert('I\'d love to hear your thoughts 💭');
       return;
     }
 
@@ -135,25 +135,25 @@ function App() {
         {step === 'welcome' && (
           <motion.div
             key="welcome"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
+            exit={{ opacity: 0, y: -30 }}
             className="step-container"
           >
             <div className="card">
               <motion.h1
-                initial={{ scale: 0.8 }}
+                initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+                transition={{ delay: 0.2, type: "spring" }}
               >
-                Hello there, beautiful soul 🌸
+                Hey 🌸
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                I've created something special with you in mind. It would mean the world to me if this could feel personal and genuine.
+                I made something for you
               </motion.p>
               
               <form onSubmit={handleWelcomeSubmit} className="form">
@@ -162,7 +162,7 @@ function App() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.6 }}
                   type="text"
-                  placeholder="What would you like me to call you?"
+                  placeholder="Your name"
                   value={userData.name}
                   onChange={(e) => setUserData(prev => ({ ...prev, name: e.target.value }))}
                   className="input"
@@ -172,31 +172,21 @@ function App() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.7 }}
                   type="email"
-                  placeholder="Your email (only if you're comfortable sharing)"
+                  placeholder="Email (optional)"
                   value={userData.email}
                   onChange={(e) => setUserData(prev => ({ ...prev, email: e.target.value }))}
-                  className="input"
-                />
-                <motion.input
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.8 }}
-                  type="tel"
-                  placeholder="Your phone (completely optional)"
-                  value={userData.phone}
-                  onChange={(e) => setUserData(prev => ({ ...prev, phone: e.target.value }))}
                   className="input"
                 />
                 <motion.button
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 1 }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(236, 72, 153, 0.4)" }}
-                  whileTap={{ scale: 0.95 }}
+                  transition={{ delay: 0.8 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="button primary"
                 >
-                  I'm curious to see what this is ✨
+                  Continue ✨
                 </motion.button>
               </form>
             </div>
@@ -206,9 +196,9 @@ function App() {
         {step === 'story' && (
           <motion.div
             key="story"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
+            exit={{ opacity: 0, y: -30 }}
             className="step-container"
           >
             <div className="card story-card">
@@ -217,66 +207,59 @@ function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Dear {userData.name}, have you ever noticed how some people just seem to make life feel... softer?
+                Hi {userData.name} 😊
               </motion.h1>
               
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
+                transition={{ delay: 0.5 }}
                 className="story-text"
               >
-                I've been reflecting on how effortlessly you bring grace into everyday moments. 
-                There's something truly special about your presence — the way you listen with such kindness, 
-                how your smile seems to light up even the simplest conversations. 
-                It's made me realize something I've been wanting to share with you.
+                You make everything feel lighter.
               </motion.p>
               
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
+                transition={{ delay: 0.8 }}
                 className="proposal-text"
               >
-                I have developed genuine feelings for you. Not in any overwhelming or pressuring way, 
-                but in the most sincere and respectful manner possible. 
-                I would be honored to explore the possibility of something beautiful together, 
-                if your heart feels the same way.
+                I like you. Would you like to go on a date with me?
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.4 }}
+                transition={{ delay: 1.1 }}
                 className="button-container"
               >
                 <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(255, 107, 157, 0.4)' }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => handleResponse('yes')}
                   className="button yes-button"
                 >
-                  🌸 I would love to explore this with you
+                  😊 Yes, I'd like that
                 </motion.button>
                 
                 <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)' }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => handleResponse('no')}
                   className="button no-button"
                 >
-                  🌿 I treasure our friendship as it is
+                  🌿 Let's stay friends
                 </motion.button>
               </motion.div>
 
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.8 }}
+                transition={{ delay: 1.4 }}
                 className="closing-text"
               >
-                Whatever you're feeling is perfectly valid and respected. 
-                Thank you for taking this moment to read something so close to my heart 🤍
+                No pressure at all 🤍
               </motion.p>
             </div>
           </motion.div>
@@ -285,9 +268,9 @@ function App() {
         {step === 'feelings' && (
           <motion.div
             key="feelings"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
+            exit={{ opacity: 0, y: -30 }}
             className="step-container"
           >
             <div className="card">
@@ -297,8 +280,8 @@ function App() {
                 transition={{ delay: 0.2 }}
               >
                 {userData.response === 'yes' 
-                  ? "Oh my goodness, truly? 🥰 This fills my heart with such joy!" 
-                  : "Thank you for your honesty and grace 🌿"}
+                  ? "Really? 🥰 That makes me happy!" 
+                  : "Thank you for being honest 🌿"}
               </motion.h2>
               
               <motion.p
@@ -307,8 +290,8 @@ function App() {
                 transition={{ delay: 0.4 }}
               >
                 {userData.response === 'yes'
-                  ? "Please know there's absolutely no pressure or expectations. We can take this journey at whatever pace feels comfortable and natural for both of us."
-                  : "Your friendship means the absolute world to me, and I deeply respect and cherish the beautiful connection we already share."}
+                  ? "We can take things slow and see how it goes."
+                  : "I'm glad we're friends. That means a lot to me."}
               </motion.p>
 
               <form onSubmit={handleSubmit} className="form">
@@ -316,23 +299,23 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  placeholder="I would be so grateful if you'd share whatever is in your heart right now..."
+                  placeholder="How are you feeling?"
                   value={userData.message}
                   onChange={(e) => setUserData(prev => ({ ...prev, message: e.target.value }))}
                   className="textarea"
-                  rows="4"
+                  rows="3"
                 />
                 
                 <motion.button
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8 }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 35px rgba(236, 72, 153, 0.4)" }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
                   className="button primary"
                 >
-                  Share with love and trust 💕
+                  Send 💕
                 </motion.button>
               </form>
             </div>
@@ -342,9 +325,9 @@ function App() {
         {step === 'thankyou' && (
           <motion.div
             key="thankyou"
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             className="step-container"
           >
             <div className="card">
@@ -353,7 +336,7 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                Thank you from the depths of my heart 🌸
+                Thank you 🌸
               </motion.h2>
               
               <motion.p
@@ -361,17 +344,7 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                Your openness and honesty mean more to me than words can express. 
-                Whatever path lies ahead, I am deeply grateful for this beautiful moment we've shared together.
-              </motion.p>
-              
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                style={{ marginTop: '20px', fontSize: '0.95rem', fontStyle: 'italic' }}
-              >
-                With all my love and respect 💝
+                I'm grateful for this moment.
               </motion.p>
             </div>
           </motion.div>
